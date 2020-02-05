@@ -34,32 +34,32 @@ void set_pmu(void* dummy) {
 	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000000));
 	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000000));
 	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("First event counter: # of instructions architecturally executed");
+	printk("First event counter: %d of instructions architecturally executed",v);
 
 	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000001));
 	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000001));
 	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Second event counter: # of L1 data cache access");
+	printk("Second event counter: %d of L1 data cache access",v);
 
 	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000002));
 	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000002));
 	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Third event counter: # of L1 data cache miss (refill)");
+	printk("Third event counter: %d of L1 data cache miss (refill)",v);
 
 	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000003));
 	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000003));
 	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Fourth event counter: # of L2 data cache miss (refill)");
+	printk("Fourth event counter: %d of L2 data cache miss (refill)",v);
 
 	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000004));
 	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000004));
 	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Fifth event counter: # of data memory access");
+	printk("Fifth event counter: %d of data memory access",v);
 
 	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000005));
 	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000005));
 	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Sixth event counter: # of Mispredicted or not predicted branch speculatively executed");
+	printk("Sixth event counter: %d of Mispredicted or not predicted branch speculatively executed",v);
 
 	//asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000000))
 }
