@@ -1,0 +1,1 @@
+cmd_/home/blendid/Documents/CSE237A_Proj1/first_part/pmuon.ko := arm-linux-gnueabihf-ld -r  -EL -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds  --build-id  -o /home/blendid/Documents/CSE237A_Proj1/first_part/pmuon.ko /home/blendid/Documents/CSE237A_Proj1/first_part/pmuon.o /home/blendid/Documents/CSE237A_Proj1/first_part/pmuon.mod.o ;  true
