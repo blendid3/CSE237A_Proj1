@@ -17,9 +17,9 @@
 
 // power consumption levels
 #define PowerType unsigned long long
-const PowerType power_max = 580;
+const PowerType power_max = 1200;
 const PowerType power_min = 500;
-const char filename[] = "result.txt";
+const char filename[] = "result1.txt";
 FILE *fp;
 
 // The function can be called after finishing workload(s)
