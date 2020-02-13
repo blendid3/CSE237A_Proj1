@@ -31,35 +31,28 @@ void set_pmu(void* dummy) {
             (v >> 11) & 0x1f, smp_processor_id());
 
     // 5. Set six event counter registers (Project Assignment you need to IMPLEMENT)
-	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000000));
-	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000000));
-	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("First event counter: %d of instructions architecturally executed",v);
+	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00));
+	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x08));
 
-	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000001));
-	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000001));
-	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Second event counter: %d of L1 data cache access",v);
 
-	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000002));
-	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000002));
-	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Third event counter: %d of L1 data cache miss (refill)",v);
+	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x01));
+	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x04));
+	
 
-	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000003));
-	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000003));
-	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Fourth event counter: %d of L2 data cache miss (refill)",v);
+	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x02));
+	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x03));
 
-	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000004));
-	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000004));
-	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Fifth event counter: %d of data memory access",v);
 
-	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x00000005));
-	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000005));
-	asm volatile("mrc p15, 0, %0, c9, c13, 1\n\t" : "=r" (v));
-	printk("Sixth event counter: %d of Mispredicted or not predicted branch speculatively executed",v);
+	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x03));
+	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x17));
+
+	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x04));
+	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x13));
+
+
+	asm volatile("mcr p15, 0, %0, c9, c12, 5\n\t" :: "r"(0x05));
+	asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x10));
+
 
 	//asm volatile("mcr p15, 0, %0, c9, c13, 1\n\t" :: "r"(0x00000000))
 }
