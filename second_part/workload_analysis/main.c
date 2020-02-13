@@ -64,7 +64,7 @@ void run_and_measure() {
     PerfData perf_msmts[MAX_CPU_IN_RPI4];
     TimeType start_time = get_current_time_us();
     run_workloads(perf_msmts);
-    printf("%d\n", perf_msmts.l1access);
+    printf("%d\n", perf_msmts->l1access);
 
     // 3. Here, we get elapsed time and performance counters.
     fprintf(fp, "Total Execution time (us): %lld at %d\r\n",
